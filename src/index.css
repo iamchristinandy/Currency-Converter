@@ -1,0 +1,30 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: "Montserrat", sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #030728;
+}
+
+#root {
+    width: 100%;
+}
+
+.currency-coverter {
+    background: red;
+    padding: 40px 30px 50px;
+    border-radius: 8px;
+    max-width: 410px;
+
+}
