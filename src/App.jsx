@@ -8,7 +8,7 @@ const App = () => {
         <input type="number" className="form-input" required/>
       </div>
 
-      <div className="form-group">
+      <div className="form-group form-currency-group">
         <div className="form-section">
             <label className="form-label">From</label>
             <div className="currency-select">
@@ -37,7 +37,7 @@ const App = () => {
       </div>
 
         <div className="form-section">
-            <label className="form-label">From</label>
+            <label className="form-label">To</label>
             <div className="currency-select">
               <img src="https://flagsapi.com/IN/flat/64.png" alt="Flag" />
               <select className="currency-dropdown">
@@ -48,10 +48,9 @@ const App = () => {
               </select>
             </div>
         </div>
-        <button type="submit" className="submit-button">Get Exchange Rate</button>
-
-        <p className="exchange-rate-result">1,000 USD = 83620.80 INR</p>
       </div>
+      <button type="submit" className="submit-button">Get Exchange Rate</button>
+      <p className="exchange-rate-result">1,000 USD = 83620.80 INR</p>
     </form>
     </div>
   )

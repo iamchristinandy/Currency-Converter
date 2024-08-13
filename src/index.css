@@ -70,3 +70,39 @@ body {
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.5);
 }
+
+.converter-form .form-currency-group {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form-currency-group .currency-select{
+    display: flex;
+    padding: 0 10px;
+    min-height: 45px;
+
+    align-items: center;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.form-currency-group .currency-select img {
+    width: 25px;
+}
+
+.form-currency-group .currency-select .currency-dropdown{
+    outline: none;
+    border: none;
+    background: none;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0 10px 0 5px;
+}
+
+.form-currency-group .currency-select .currency-dropdown option {
+    color: black;
+    font-weight: 500;
+}
