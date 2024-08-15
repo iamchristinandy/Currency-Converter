@@ -1,6 +1,10 @@
+import { useState } from "react"
 import CurrencySelector from "./CurrencySelector"
 
 const ConverterForm = () => {
+    const [fromCurrency, setFromCurrency] = useState("USD");
+    const [toCurrency, setToCurrency] = useState("USD");
+
   return (
     <form className="converter-form">
       <div className="form-group">
@@ -11,7 +15,9 @@ const ConverterForm = () => {
       <div className="form-group form-currency-group">
         <div className="form-section">
             <label className="form-label">From</label>
-            <CurrencySelector/>
+            <CurrencySelector
+                selectedCurrency={fromCurrency}
+            />
         </div>
 
       <div className="swap-icon">
@@ -30,7 +36,9 @@ const ConverterForm = () => {
 
         <div className="form-section">
             <label className="form-label">To</label>
-            <CurrencySelector/>
+            <CurrencySelector
+                selectedCurrency={toCurrency}
+            />
         </div>
       </div>
       <button type="submit" className="submit-button">Get Exchange Rate</button>
