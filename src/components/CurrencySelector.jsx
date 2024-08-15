@@ -19,11 +19,16 @@ const currencyCodes = [
     "ZWL"
 ];
 
-const CurrencySelector = (selectedCurrency) => {
+const CurrencySelector = (selectedCurrency, handleCurrency) => {
+    // Extract the country code from the selected currency code
+    const countryCode = selectedCurrency.substring(0, 2);
   return (
     <div className="currency-select">
-              <img src="https://flagsapi.com/US/flat/64.png" alt="Flag" />
-              <select className="currency-dropdown" value={selectedCurrency}>
+              <img src={`https://flagsapi.com/${countryCode}/flat/64.png`} alt="Flag" />
+              <select
+              onChange={handleCurrency}
+              className="currency-dropdown"
+              value={selectedCurrency}>
                 {currencyCodes.map(currency => (
                     <option key={currency} value={currency}>{currency}</option>
                 ))}

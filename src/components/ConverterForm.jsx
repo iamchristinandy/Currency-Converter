@@ -17,6 +17,7 @@ const ConverterForm = () => {
             <label className="form-label">From</label>
             <CurrencySelector
                 selectedCurrency={fromCurrency}
+                handleCurrency={e => setFromCurrency(e.target.value)}
             />
         </div>
 
@@ -38,6 +39,7 @@ const ConverterForm = () => {
             <label className="form-label">To</label>
             <CurrencySelector
                 selectedCurrency={toCurrency}
+                handleCurrency={e => setToCurrency(e.target.value)}
             />
         </div>
       </div>
