@@ -5,6 +5,12 @@ const ConverterForm = () => {
     const [fromCurrency, setFromCurrency] = useState("USD");
     const [toCurrency, setToCurrency] = useState("USD");
 
+
+    const handleSwapCurrencies = () => {
+        setFromCurrency(toCurrency);
+        setToCurrency(fromCurrency);
+    }
+
   return (
     <form className="converter-form">
       <div className="form-group">
@@ -21,7 +27,7 @@ const ConverterForm = () => {
             />
         </div>
 
-      <div className="swap-icon">
+      <div className="swap-icon" onClick={handleSwapCurrencies}>
       <svg width="16" viewBox="0 0 20 19" xmlns="http://www.w3.org/2000/svg">
     <path
         d="M19.13 11.66H.22a.22.22 0 0 0-.22.22v1.62a.22.22 0 0
