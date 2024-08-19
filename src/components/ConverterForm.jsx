@@ -11,8 +11,30 @@ const ConverterForm = () => {
         setToCurrency(fromCurrency);
     }
 
+    // Function to fetch the exchange rate and update the result
+    const getExchangeRate = async () => {
+      const API_KEY = import.meta.env.VITE_API_KEY;
+      const API_URL = `https://v6.exchangerate-api.com/v6/${API_KEY}/pair/${fromCurrency}/${toCurrency}`;
+
+      try {
+        const response = await fetch(API_URL)
+      } catch (error){
+        if (!response.ok) throw Error("Something went wrong");
+
+        const data = await response.json();
+        console.log(data);
+        console.log(error);
+      }
+    }
+
+    // Handle form submission
+    const handleFormSubmit = (e) => {
+      e.preventDefault();
+      getExchangeRate();
+    }
+
   return (
-    <form className="converter-form">
+    <form className="converter-form" onSubmit={handleFormSubmit}>
       <div className="form-group">
         <label className="form-label">Enter Amount</label>
         <input type="number" className="form-input" required/>
