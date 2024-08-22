@@ -2,6 +2,7 @@ import { useState } from "react"
 import CurrencySelector from "./CurrencySelector"
 
 const ConverterForm = () => {
+    const [amount, setAmount] = useState(100);
     const [fromCurrency, setFromCurrency] = useState("USD");
     const [toCurrency, setToCurrency] = useState("USD");
 
@@ -22,7 +23,8 @@ const ConverterForm = () => {
         if (!response.ok) throw Error("Something went wrong");
 
         const data = await response.json();
-        console.log(data);
+        const rate = (data.conversion_rate * amount).toFixed;
+        console.log(rate);
         console.log(error);
       }
     }
@@ -37,7 +39,7 @@ const ConverterForm = () => {
     <form className="converter-form" onSubmit={handleFormSubmit}>
       <div className="form-group">
         <label className="form-label">Enter Amount</label>
-        <input type="number" className="form-input" required/>
+        <input type="number" className="form-input" value={amount} onChange={e => setAmount(e.target.value)} required/>
       </div>
 
       <div className="form-group form-currency-group">
