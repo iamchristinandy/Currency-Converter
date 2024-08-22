@@ -4,7 +4,8 @@ import CurrencySelector from "./CurrencySelector"
 const ConverterForm = () => {
     const [amount, setAmount] = useState(100);
     const [fromCurrency, setFromCurrency] = useState("USD");
-    const [toCurrency, setToCurrency] = useState("USD");
+    const [toCurrency, setToCurrency] = useState("GHS");
+    const [result, setResult] = useState("");
 
 
     const handleSwapCurrencies = () => {
@@ -24,7 +25,7 @@ const ConverterForm = () => {
 
         const data = await response.json();
         const rate = (data.conversion_rate * amount).toFixed;
-        console.log(rate);
+        setResult(`${amount}, ${fromCurrency} = ${rate} ${toCurrency}`);
         console.log(error);
       }
     }
@@ -74,7 +75,10 @@ const ConverterForm = () => {
         </div>
       </div>
       <button type="submit" className="submit-button">Get Exchange Rate</button>
-      <p className="exchange-rate-result">1,000 USD = 83620.80 INR</p>
+      <p className="exchange-rate-result">
+        {/*Display the conversion result*/}
+        {result}
+      </p>
     </form>
   )
 }
