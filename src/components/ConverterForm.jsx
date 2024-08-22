@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import CurrencySelector from "./CurrencySelector"
 
 const ConverterForm = () => {
@@ -6,6 +6,7 @@ const ConverterForm = () => {
     const [fromCurrency, setFromCurrency] = useState("USD");
     const [toCurrency, setToCurrency] = useState("GHS");
     const [result, setResult] = useState("");
+    const [isLoading, setisLoading] = useState(false);
 
 
     const handleSwapCurrencies = () => {
@@ -18,15 +19,18 @@ const ConverterForm = () => {
       const API_KEY = import.meta.env.VITE_API_KEY;
       const API_URL = `https://v6.exchangerate-api.com/v6/${API_KEY}/pair/${fromCurrency}/${toCurrency}`;
 
+      setisLoading(true);
       try {
         const response = await fetch(API_URL)
       } catch (error){
         if (!response.ok) throw Error("Something went wrong");
 
         const data = await response.json();
-        const rate = (data.conversion_rate * amount).toFixed;
+        const rate = (data.conversion_rate * amount).toFixed(2);
         setResult(`${amount}, ${fromCurrency} = ${rate} ${toCurrency}`);
         console.log(error);
+      } finally {
+        setisLoading(false);
       }
     }
 
@@ -35,6 +39,9 @@ const ConverterForm = () => {
       e.preventDefault();
       getExchangeRate();
     }
+
+    // Fetch Exchange on initial render
+    useEffect(() => getExchangeRate, []);
 
   return (
     <form className="converter-form" onSubmit={handleFormSubmit}>
@@ -74,10 +81,10 @@ const ConverterForm = () => {
             />
         </div>
       </div>
-      <button type="submit" className="submit-button">Get Exchange Rate</button>
+      <button type="submit" className={`${isLoading ? "loading": ""} submit-button`}>Get Exchange Rate</button>
       <p className="exchange-rate-result">
         {/*Display the conversion result*/}
-        {result}
+        {isLoading ? "Getting Exchange Rate...": result}
       </p>
     </form>
   )
